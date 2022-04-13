@@ -1,6 +1,17 @@
 var APIKey = "dc591a53f8e7a96b2703399147c86ba9"
 let dailyWeather;
 
+
+
+function displayWeather() {
+    const weatherDisplay = document.getElementById("display");
+    for(i=0; i < 6; i++) {
+        
+    }
+}
+
+
+
 //button click function//
 function search() {
     const cityName = document.getElementById("city").value
@@ -13,30 +24,24 @@ function search() {
                 const lon = data[0].lon;
                 const getWeather = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&appid=${APIKey}&units=imperial`;
                 // console.log(data);
+                fetch(getWeather).then(function (response) {
+                    // request was successful
+                    if (response.ok) {
+                        response.json().then(function (data) {
+                            dailyWeather = data.daily;
+                            displayWeather();
+                            // console.log(data);
+                        });
+                    }
+                    
+                })
             });
         }
-        else {
-            alert("There was a problem with your request!");
-        }
+       
 
 
-        fetch(getWeather).then(function (response) {
-            // request was successful
-            if (response.ok) {
-                response.json().then(function (data) {
-                    dailyWeather = data.daily;
-                    displayWeather();
-                    // console.log(data);
-                });
-            }
-            else {
-                alert("There was a problem with your request!");
-            }
-        }
+       
+    })
 
-  
-}
 
-function displayWeather(){
-
-}
+};
