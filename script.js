@@ -3,21 +3,22 @@ let dailyWeather;
 
 
 
+
 function displayWeather() {
     const weatherDisplay = document.getElementById("display");
     for(i=0; i < 6; i++) {
         const dw = dailyWeather[i];
         const el = document.createElement("div");
             var date = new Date(dw.dt * 1000);
-            var temp = dw.temp.day + "deg F";
-            var wind = dw.wind_speed + "MPH"; 
-            var humidity = dw.humidity + "%";
-        el.innerText = date + temp + wind + humidity;
+            var temp = dw.temp.day + " " + "deg F";
+            var wind = "Wind:" + dw.wind_speed + " " + "MPH"; 
+            var humidity = "Humidty:" + " "  + dw.humidity + "%";
+        el.innerText = date + "\n"+ temp + "\n" + wind + "\n" + humidity;
 
         if (i==0) {
-            el.setAttribute("class", "current")
+            el.setAttribute("class", "current col-12")
         }else {
-            el.setAttribute ("class", "forcast")
+            el.setAttribute ("class", "forcast col-2")
         }
 
         weatherDisplay.appendChild(el)

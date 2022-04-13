@@ -7,3 +7,26 @@ h1 {
     background: linear-gradient(330deg, blue, transparent);
 
 }
+
+container {
+    text-align: end;
+    
+}
+
+.current {
+    display: flex;
+    justify-content:center;
+    border: 2px solid black;
+}
+
+
+.forcast{
+display: flex;
+background-color: blue;
+color: antiquewhite;
+border-right: 2px solid black;
+}
+
+.form {
+    display:table-caption;
+}
