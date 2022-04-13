@@ -6,8 +6,23 @@ let dailyWeather;
 function displayWeather() {
     const weatherDisplay = document.getElementById("display");
     for(i=0; i < 6; i++) {
-        
-    }
+        const dw = dailyWeather[i];
+        const el = document.createElement("div");
+            var date = new Date(dw.dt * 1000);
+            var temp = dw.temp.day + "deg F";
+            var wind = dw.wind_speed + "MPH"; 
+            var humidity = dw.humidity + "%";
+        el.innerText = date + temp + wind + humidity;
+
+        if (i==0) {
+            el.setAttribute("class", "current")
+        }else {
+            el.setAttribute ("class", "forcast")
+        }
+
+        weatherDisplay.appendChild(el)
+
+    };
 }
 
 
