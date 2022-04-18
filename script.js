@@ -8,6 +8,10 @@ function displayWeather() {
     const weatherDisplay = document.getElementById("display");
     for(i=0; i < 6; i++) {
         const dw = dailyWeather[i];
+        var icon = dw.weather[0].icon;
+        const pic = "http://openweathermap.org/img/w/"+icon + ".png"
+        const imageEL = document.createElement("img");
+        imageEL.setAttribute("src", pic);
         const el = document.createElement("div");
             var date = new Date(dw.dt * 1000);
             var temp = dw.temp.day + " " + "deg F";
@@ -21,7 +25,8 @@ function displayWeather() {
             el.setAttribute ("class", "forcast col-2")
         }
 
-        weatherDisplay.appendChild(el)
+        weatherDisplay.appendChild(el);
+        weatherDisplay.appendChild(imageEL);
 
     };
 }
@@ -38,15 +43,15 @@ function search() {
             response.json().then(function (data) {
                 const lat = data[0].lat;
                 const lon = data[0].lon;
-                const getWeather = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&appid=${APIKey}&units=imperial`;
-                // console.log(data);
+                const getWeather = "https://api.openweathermap.org/data/2.5/onecall?lat="+ lat +"&lon=" + lon +"&exclude=minutely,hourly&appid="+ APIKey + "&units=imperial";
+                console.log(data);
                 fetch(getWeather).then(function (response) {
                     // request was successful
                     if (response.ok) {
                         response.json().then(function (data) {
                             dailyWeather = data.daily;
                             displayWeather();
-                            // console.log(data);
+                            console.log(data);
                         });
                     }
                     

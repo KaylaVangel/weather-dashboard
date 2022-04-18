@@ -22,11 +22,18 @@ container {
 
 .forcast{
 display: flex;
-background-color: blue;
+background-color: rgb(50, 50, 158);
 color: antiquewhite;
 border-right: 2px solid black;
 }
 
 .form {
     display:table-caption;
+}
+img {
+    width: 40px !important;
+    height: 40px;
+    max-width: none !important;
+    padding: 0px !important;
+    margin: 0px !important;
 }
